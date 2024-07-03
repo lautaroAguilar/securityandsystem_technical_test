@@ -3,6 +3,19 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0 4rem;
   min-height: 100dvh;
+}
+.header {
+  width: 100%;
+  height: auto;
+  padding: 1rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 768px) {
+ .main{
+  padding: 0 1rem;
+ } 
 }
