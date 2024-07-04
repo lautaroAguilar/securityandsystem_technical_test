@@ -1,11 +1,22 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
-
+import { useAppContext } from "@/context/AppContext";
 function Navbar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isOpen, setIsOpen] = useState(false);
+  const { updateState } = useAppContext();
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+  const handleChangeSection = (newState) => {
+    updateState(newState);
+    console.log(newState);
+  };
   useEffect(() => {
     /* para conocer el ancho de la pantalla y mostrar un menú u otro */
     const handleResize = () => {
@@ -17,15 +28,6 @@ function Navbar() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
-
   return (
     <nav className={styles.navbar}>
       {isMobile ? (
@@ -38,16 +40,44 @@ function Navbar() {
           </div>
           <ul className={`${styles.navLinks} ${isOpen ? styles.active : ""}`}>
             <li>
-              <p onClick={handleLinkClick}>Inicio</p>
+              <p
+                onClick={() => {
+                  handleChangeSection("Inicio");
+                  handleLinkClick();
+                }}
+              >
+                Inicio
+              </p>
             </li>
             <li>
-              <p onClick={handleLinkClick}>Sobre Mí</p>
+              <p
+                onClick={() => {
+                  handleChangeSection("Sobre Mí");
+                  handleLinkClick();
+                }}
+              >
+                Sobre Mí
+              </p>
             </li>
             <li>
-              <p onClick={handleLinkClick}>Intereses</p>
+              <p
+                onClick={() => {
+                  handleChangeSection("Intereses");
+                  handleLinkClick();
+                }}
+              >
+                Intereses
+              </p>
             </li>
             <li>
-              <p onClick={handleLinkClick}>Contacto</p>
+              <p
+                onClick={() => {
+                  handleChangeSection("Contacto");
+                  handleLinkClick();
+                }}
+              >
+                Contacto
+              </p>
             </li>
           </ul>
         </div>
