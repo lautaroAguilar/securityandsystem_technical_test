@@ -1,8 +1,9 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
+  gap: 4rem;
   padding: 0 4rem;
   min-height: 100dvh;
 }
@@ -15,7 +16,7 @@
   align-items: center;
 }
 @media (max-width: 768px) {
- .main{
-  padding: 0 1rem;
- } 
+  .main {
+    padding: 0 1rem;
+  }
 }
