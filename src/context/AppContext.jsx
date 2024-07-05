@@ -5,14 +5,18 @@ const AppContext = createContext();
 
 const initialContent = "Inicio";
 export const AppContextProvider = ({ children }) => {
-  const [state, setState] = useState(initialContent);
-
-  const updateState = (newState) => {
-    setState(newState);
+  const [section, setSection] = useState(initialContent);
+  const [denied, setDenied] = useState(false);
+  const updateSection = (newState) => {
+    setSection(newState);
   };
-
+  const handleDenied = () => {
+    setDenied(true);
+  };
   return (
-    <AppContext.Provider value={{ state, updateState }}>
+    <AppContext.Provider
+      value={{ section, updateSection, denied, handleDenied }}
+    >
       {children}
     </AppContext.Provider>
   );

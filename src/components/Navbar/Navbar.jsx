@@ -1,11 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
+import { IoMenu } from "react-icons/io5";
 import { useAppContext } from "@/context/AppContext";
 function Navbar() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [isOpen, setIsOpen] = useState(false);
-  const { updateState } = useAppContext();
+  const { updateSection } = useAppContext();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -14,7 +15,7 @@ function Navbar() {
     setIsOpen(false);
   };
   const handleChangeSection = (newState) => {
-    updateState(newState);
+    updateSection(newState);
     console.log(newState);
   };
   useEffect(() => {
@@ -29,75 +30,83 @@ function Navbar() {
     };
   }, []);
   return (
-    <nav className={styles.navbar}>
+    <>
       {isMobile ? (
-        <div className={styles.container_hamburguer}>
-          <div
-            className={`${styles.hamburger} ${isOpen ? styles.active : ""}`}
-            onClick={toggleMenu}
-          >
-            &#9776;
-          </div>
-          <ul className={`${styles.navLinks} ${isOpen ? styles.active : ""}`}>
-            <li>
-              <p
-                onClick={() => {
-                  handleChangeSection("Inicio");
-                  handleLinkClick();
-                }}
+        <nav className={styles.navbar}>
+          {isMobile ? (
+            <div className={styles.container_hamburguer}>
+              <div
+                className={`${styles.hamburger} ${isOpen ? styles.active : ""}`}
+                onClick={toggleMenu}
               >
-                Inicio
-              </p>
-            </li>
-            <li>
-              <p
-                onClick={() => {
-                  handleChangeSection("Sobre Mí");
-                  handleLinkClick();
-                }}
+                <IoMenu style={{ color: "#F5F5F5", fontSize: "2rem" }} />
+              </div>
+              <ul
+                className={`${styles.navLinks} ${isOpen ? styles.active : ""}`}
               >
-                Sobre Mí
-              </p>
-            </li>
-            <li>
-              <p
-                onClick={() => {
-                  handleChangeSection("Intereses");
-                  handleLinkClick();
-                }}
-              >
-                Intereses
-              </p>
-            </li>
-            <li>
-              <p
-                onClick={() => {
-                  handleChangeSection("Contacto");
-                  handleLinkClick();
-                }}
-              >
-                Contacto
-              </p>
-            </li>
-          </ul>
-        </div>
+                <li>
+                  <p
+                    onClick={() => {
+                      handleChangeSection("Inicio");
+                      handleLinkClick();
+                    }}
+                  >
+                    INICIO
+                  </p>
+                </li>
+                <li>
+                  <p
+                    onClick={() => {
+                      handleChangeSection("Sobre Mí");
+                      handleLinkClick();
+                    }}
+                  >
+                    SOBRE MÍ
+                  </p>
+                </li>
+                <li>
+                  <p
+                    onClick={() => {
+                      handleChangeSection("Intereses");
+                      handleLinkClick();
+                    }}
+                  >
+                    INTERESES
+                  </p>
+                </li>
+                <li>
+                  <p
+                    onClick={() => {
+                      handleChangeSection("Contacto");
+                      handleLinkClick();
+                    }}
+                  >
+                    CONTACTO
+                  </p>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <ul className={styles.navLinks}>
+              <li>
+                <p>Inicio</p>
+              </li>
+              <li>
+                <p>Sobre Mí</p>
+              </li>
+              <li>
+                <p>Intereses</p>
+              </li>
+              <li>
+                <p>Contacto</p>
+              </li>
+            </ul>
+          )}
+        </nav>
       ) : (
-        <ul className={styles.navLinks}>
-          <li>
-            <p>Inicio</p>
-          </li>
-          <li>
-            <p>Sobre Mí</p>
-          </li>
-          <li>
-            <p>Intereses</p>
-          </li>
-          <li>
-            <p>Contacto</p>
-          </li>
-        </ul>
+        ""
       )}
-    </nav>
+    </>
   );
 }
 
