@@ -13,70 +13,81 @@ export default function Circles() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const [angle, setAngle] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAngle((prevAngle) => prevAngle + 0.3); // Hacer la animación más lenta
+    }, 20); // Aumentar el intervalo para que sea más lenta
+
+    return () => clearInterval(interval);
+  }, []);
+
   const circles = [
     {
       styles: {
-        width: "200px",
-        height: "200px",
+        width: "150px", // Reducir el tamaño de la circunferencia
+        height: "150px", // Reducir el tamaño de la circunferencia
         background:
           "linear-gradient(140deg, rgba(46,2,147,1) 0%, rgba(14,1,45,1) 70%)",
         borderRadius: "50%",
         position: "absolute",
-        top: "55%",
-        left: mobile ? "60%" : "80%",
+        top: `${50 + 15 * Math.sin((angle * Math.PI) / 180)}%`, // Reducir la distancia recorrida
+        left: `${50 + 15 * Math.cos((angle * Math.PI) / 180)}%`, // Reducir la distancia recorrida
         zIndex: "-10",
       },
     },
     {
       styles: {
-        width: "250px",
-        height: "250px",
+        width: "200px", // Reducir el tamaño de la circunferencia
+        height: "200px", // Reducir el tamaño de la circunferencia
         background:
           "linear-gradient(140deg, rgba(92,2,147,1) 0%, rgba(41,1,45,1) 70%)",
         borderRadius: "50%",
         position: "absolute",
-        top: "45%",
-        left: mobile ? "-10%" : "10%",
+        top: `${40 + 15 * Math.sin(((angle + 120) * Math.PI) / 180)}%`, // Reducir la distancia recorrida
+        left: `${50 + 15 * Math.cos(((angle + 120) * Math.PI) / 180)}%`, // Reducir la distancia recorrida
         zIndex: "-10",
       },
     },
     {
       styles: {
-        width: "300px",
-        height: "300px",
+        width: "250px", // Reducir el tamaño de la circunferencia
+        height: "250px", // Reducir el tamaño de la circunferencia
         background:
           "linear-gradient(140deg, rgba(255,209,239,1) 0%, rgba(101,0,203,1) 85%)",
         borderRadius: "50%",
         position: "absolute",
-        top: "5%",
-        left: mobile ? "30%" : "45%",
+        top: `${10 + 15 * Math.sin(((angle + 240) * Math.PI) / 180)}%`, // Reducir la distancia recorrida
+        left: `${50 + 15 * Math.cos(((angle + 240) * Math.PI) / 180)}%`, // Reducir la distancia recorrida
         zIndex: "-10",
       },
     },
     {
       styles: {
-        width: "150px",
-        height: "150px",
+        width: "100px", // Reducir el tamaño de la circunferencia
+        height: "100px", // Reducir el tamaño de la circunferencia
         background:
           " linear-gradient(140deg, rgba(108,78,173,0.5) 0%, rgba(27,0,54,1) 85%)",
         borderRadius: "50%",
         position: "absolute",
-        top: "15%",
-        left: "20%",
+        top: `${20 + 15 * Math.sin(((angle + 60) * Math.PI) / 180)}%`, // Reducir la distancia recorrida
+        left: `${20 + 15 * Math.cos(((angle + 60) * Math.PI) / 180)}%`, // Reducir la distancia recorrida
         zIndex: "-10",
         display: mobile ? "none" : "block",
       },
     },
     {
       styles: {
-        width: "200px",
-        height: "200px",
+        width: "150px", // Reducir el tamaño de la circunferencia
+        height: "150px", // Reducir el tamaño de la circunferencia
         background:
           "linear-gradient(140deg, rgba(81,0,255,1) 0%, rgba(42,20,64,1) 100%)",
         borderRadius: "50%",
         position: "absolute",
-        top: "70%",
-        left: "50%",
+        top: `${70 + 15 * Math.sin(((angle + 180) * Math.PI) / 180)}%`, // Reducir la distancia recorrida
+        left: `${50 + 15 * Math.cos(((angle + 180) * Math.PI) / 180)}%`, // Reducir la distancia recorrida
         zIndex: "-10",
         display: mobile ? "none" : "block",
       },
@@ -84,8 +95,8 @@ export default function Circles() {
   ];
   return (
     <>
-      {circles.map((circle) => (
-        <div style={circle.styles}></div>
+      {circles.map((circle, index) => (
+        <div key={index} style={circle.styles}></div>
       ))}
     </>
   );
