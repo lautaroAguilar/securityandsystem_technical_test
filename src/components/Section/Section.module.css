@@ -1,0 +1,40 @@
+.containerDesktop {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.containerDesktop_sections {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 4rem;
+}
+.firstContainer {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+.secondContainer {
+  width: 50%;
+  height: 100%;
+  padding: 1rem 0;
+}
+.animation {
+  opacity: 0;
+  animation: slideUp 1s ease-in-out forwards;
+}
+@keyframes slideUp {
+  0% {
+    transform: translateY(5%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

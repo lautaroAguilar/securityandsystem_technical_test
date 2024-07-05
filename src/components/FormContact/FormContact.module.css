@@ -1,0 +1,78 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background: rgba(183, 183, 183, 0.09);
+  border-radius: 8px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(246, 170, 255, 0.452);
+}
+.formContact {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.formContact textarea {
+  height: 100px;
+  max-height: 140px;
+  max-width: 100%;
+  color: #f5f5f5;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(246, 170, 255, 0.452);
+  overflow: hidden;
+}
+.formContact textarea:focus {
+  outline: 1px solid rgba(243, 130, 255, 0.452);
+}
+.formContact label {
+  font-size: 10px;
+  font-weight: 500;
+  color: #f5f5f5;
+}
+.formContact input {
+  height: 48px;
+  width: 100%;
+  background-color: transparent;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+  border: 1px solid rgba(246, 170, 255, 0.452);
+  color: #f5f5f5;
+}
+.formContact input:focus {
+  outline: 1px solid rgba(243, 130, 255, 0.452);
+}
+.button {
+  height: 48px;
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: rgb(14, 0, 48);
+  color: #f5f5f5;
+  border-radius: 4px;
+  border: none;
+}
+.button:focus {
+  outline: 1px solid rgba(6, 0, 24, 0.452);
+}
+@media (min-width: 769px) {
+  .container {
+    /* width: 450px; */
+    height: 100%;
+  }
+}
