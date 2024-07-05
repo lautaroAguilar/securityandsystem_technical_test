@@ -25,20 +25,41 @@ export default function Section() {
     <>
       {isMobile ? (
         <>
+          {/* diferentes secciones en mobile */}
           {section === "Inicio" && <Modal />}
           {section === "Sobre Mí" && <Description />}
           {section === "Intereses" && <Interests />}
           {section === "Contacto" && <FormContact />}
         </>
       ) : (
-        <div style={{ display: "flex" }}>
-          {denied ? <></> : <Modal close={true} />}
-          <div>
-            <Description />
-            <Interests />
-          </div>
-          <div>
-            <FormContact />
+        <div className={styles.containerDesktop}>
+          {/* simulación de Modal en desktop */}
+          {denied ? (
+            <></>
+          ) : (
+            <Modal
+              close={true}
+              style={{
+                width: "400px",
+                height: "300px",
+                background: "#6b4dac",
+                padding: "2rem",
+                borderRadius: "1rem",
+                position: "absolute",
+                top: "calc(50% - 200px)",
+                left: "calc(50% - 200px)",
+                zIndex: 40,
+              }}
+            />
+          )}
+          <div className={styles.containerDesktop_sections}>
+            <div className={styles.firstContainer}>
+              <Description />
+              <Interests />
+            </div>
+            <div className={styles.secondContainer}>
+              <FormContact />
+            </div>
           </div>
         </div>
       )}

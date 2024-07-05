@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import styles from "./FormContact.module.css";
 export default function FormContact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -21,35 +21,41 @@ export default function FormContact() {
     console.log(name, email, message);
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Nombre:</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={name}
-          onChange={handleChangeName}
-        />
+    <div className={styles.container}>
+      <form onSubmit={handleSubmit} className={styles.formContact}>
+        <div className={styles.inputContainer}>
+          <label htmlFor="name">NOMBRE:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            onChange={handleChangeName}
+          />
+        </div>
 
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={handleChangeEmail}
-        />
+        <div className={styles.inputContainer}>
+          <label htmlFor="email">EMAIL:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={handleChangeEmail}
+          />
+        </div>
 
-        <label htmlFor="message">Mensaje:</label>
-        <textarea
-          id="message"
-          name="message"
-          value={message}
-          onChange={handleChangeMessage}
-        ></textarea>
+        <div className={styles.inputContainer}>
+          <label htmlFor="message">MENSAJE:</label>
+          <textarea
+            id="message"
+            name="message"
+            value={message}
+            onChange={handleChangeMessage}
+          ></textarea>
+        </div>
 
-        <button type="submit">Enviar</button>
+        <button type="submit" className={styles.button}>Enviar</button>
       </form>
     </div>
   );

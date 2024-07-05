@@ -1,8 +1,8 @@
 import React from "react";
-
+import styles from "./Description.module.css";
 export default function Description() {
   return (
-    <div>
+    <div className={styles.container}>
       <p>
         Hola, mi nombre es Lautaro. Tengo 22 años, vivo en Buenos Aires,
         Argentina.
