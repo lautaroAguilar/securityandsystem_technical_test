@@ -7,15 +7,16 @@
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
+  min-height: 100dvh;
+  overflow: hidden;
 }
 
 body {
   color: #0b0b0b;
+  background-color: #6c4ead;
 }
 
 a {
   color: inherit;
   text-decoration: none;
 }
-
