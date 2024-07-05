@@ -70,6 +70,9 @@
 .button:focus {
   outline: 1px solid rgba(6, 0, 24, 0.452);
 }
+.button:hover {
+  cursor: pointer;  
+}
 @media (min-width: 769px) {
   .container {
     /* width: 450px; */

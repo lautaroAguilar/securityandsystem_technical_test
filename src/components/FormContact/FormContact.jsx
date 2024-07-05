@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./FormContact.module.css";
+import Tooltip from "../Tooltip/Tooltip";
+
 export default function FormContact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [messageTooltip, setMessageTooltip] = useState("");
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [backgroundTooltip, setBackgroundTooltip] = useState("");
 
   const handleChangeName = (e) => {
     setName(e.target.value);
@@ -16,10 +21,30 @@ export default function FormContact() {
   const handleChangeMessage = (e) => {
     setMessage(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email, message);
+    if (name && email && message) {
+      setShowTooltip(true);
+      setMessageTooltip("MENSAJE ENVIADO");
+      setBackgroundTooltip("#00a800");
+    } else {
+      setShowTooltip(true);
+      setMessageTooltip("COMPLETA LOS CAMPOS");
+      setBackgroundTooltip("#bd1212");
+    }
   };
+
+  useEffect(() => {
+    let timeout;
+    if (showTooltip) {
+      timeout = setTimeout(() => {
+        setShowTooltip(false);
+      }, 3000);
+    }
+    return () => clearTimeout(timeout);
+  }, [showTooltip]);
+
   return (
     <div className={styles.container}>
       <form onSubmit={handleSubmit} className={styles.formContact}>
@@ -55,8 +80,13 @@ export default function FormContact() {
           ></textarea>
         </div>
 
-        <button type="submit" className={styles.button}>Enviar</button>
+        <button type="submit" className={styles.button}>
+          Enviar
+        </button>
       </form>
+      {showTooltip && (
+        <Tooltip text={messageTooltip} backgroundColor={backgroundTooltip} />
+      )}
     </div>
   );
 }
